@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Env/config
+.env
+.env.*
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+
+# Builds & caches
+dist/
+build/
+coverage/
+.parcel-cache/
+.turbo/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

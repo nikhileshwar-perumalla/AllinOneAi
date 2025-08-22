@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeastedChat - Multi-LLM Chat Viewer</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+	<div class="header">
+		<div>
+			<span class="header-title">FeastedChat</span>
+			<span class="header-sub">Multi-LLM Chat Viewer</span>
+		</div>
+		<div class="header-actions">
+			<button onclick="window.location.href='index.html'">Chat</button>
+			<button onclick="window.location.href='apikey.html'">Settings</button>
+		</div>
+	</div>
+	<div class="main">
+		<div class="chat-box">
+			<form id="chatForm" autocomplete="off">
+				<div class="prompt-row">
+					<input type="text" id="promptInput" placeholder="Enter your prompt here..." required />
+					<button type="submit">&#9993; Generate</button>
+				</div>
+				<div class="models-row">
+					<span>Models:</span>
+					<label class="model-toggle"><input type="checkbox" id="toggle-gpt4o" /> GPT-4o <span class="no-key">No Key</span></label>
+					<label class="model-toggle"><input type="checkbox" id="toggle-claude" /> Claude 3.5 Sonnet <span class="no-key">No Key</span></label>
+					<label class="model-toggle"><input type="checkbox" id="toggle-grok" /> Grok-2 <span class="no-key">No Key</span></label>
+					<label class="model-toggle"><input type="checkbox" id="toggle-gemini" /> Gemini 1.5 Flash (Free) <span class="no-key">No Key</span></label>
+					<label class="model-toggle"><input type="checkbox" id="toggle-commandr" /> Command R <span class="no-key">No Key</span></label>
+					<label class="model-toggle"><input type="checkbox" id="toggle-mistral" /> Mistral Large <span class="no-key">No Key</span></label>
+					<label class="model-toggle"><input type="checkbox" id="toggle-openrouter" /> OpenRouter Claude <span class="no-key">No Key</span></label>
+				</div>
+			</form>
+			<div class="responses" id="responses">
+				<div class="response-card" id="card-gpt4o">
+					<div class="response-title">GPT-4o <span class="no-key-badge no-key"></span></div>
+					<div class="response-content" id="gpt4o-response">No response yet.</div>
+				</div>
+				<div class="response-card" id="card-claude">
+					<div class="response-title">Claude 3.5 Sonnet <span class="no-key-badge no-key"></span></div>
+					<div class="response-content" id="claude-response">No response yet.</div>
+				</div>
+				<div class="response-card" id="card-grok">
+					<div class="response-title">Grok-2 <span class="no-key-badge no-key"></span></div>
+					<div class="response-content" id="grok-response">No response yet.</div>
+				</div>
+				<div class="response-card" id="card-gemini">
+					<div class="response-title">Gemini 1.5 Flash (Free) <span class="no-key-badge no-key"></span></div>
+					<div class="response-content" id="gemini-response">No response yet.</div>
+				</div>
+				<div class="response-card" id="card-commandr">
+					<div class="response-title">Command R <span class="no-key-badge no-key"></span></div>
+					<div class="response-content" id="commandr-response">No response yet.</div>
+				</div>
+				<div class="response-card" id="card-mistral">
+					<div class="response-title">Mistral Large <span class="no-key-badge no-key"></span></div>
+					<div class="response-content" id="mistral-response">No response yet.</div>
+				</div>
+				<div class="response-card" id="card-openrouter">
+					<div class="response-title">OpenRouter Claude <span class="no-key-badge no-key"></span></div>
+					<div class="response-content" id="openrouter-response">No response yet.</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="assets/js/app.js"></script>
+</body>
+</html>

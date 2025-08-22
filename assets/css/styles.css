@@ -1,0 +1,58 @@
+/* Global */
+:root{
+  --bg:#111; --bg-2:#181818; --card:#222; --text:#fff; --muted:#aaa; --border:#333; --accent:#4f8cff; --warn:#ff6a3c;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter', Arial, sans-serif;
+  margin:0;
+}
+
+/* Header */
+.header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.5rem 2rem 1rem; background:var(--bg-2);
+}
+.header-title{font-size:2rem; font-weight:bold; letter-spacing:-1px}
+.header-sub{font-size:1rem; color:var(--muted); margin-left:.5rem}
+.header-actions{display:flex; gap:1rem}
+.header-actions button{
+  background:#222; color:#fff; border:1px solid var(--border); border-radius:8px; padding:.5rem 1.2rem; font-size:1rem; cursor:pointer; transition:background .2s;
+}
+.header-actions button:hover{background:#333}
+
+/* Layout */
+.main{display:flex; flex-direction:column; align-items:center; justify-content:flex-start; min-height:80vh; margin-top:2rem; padding:0 1rem}
+.chat-box{background:var(--bg-2); border-radius:14px; box-shadow:0 2px 16px rgba(0,0,0,.18); padding:2rem 2.5rem 2.5rem; width:100%; max-width:820px}
+
+/* Prompt */
+.prompt-row{display:flex; gap:1rem; margin-bottom:1.2rem}
+.prompt-row input{
+  flex:1; background:#222; color:#fff; border:1px solid var(--border); border-radius:8px; padding:1rem; font-size:1.05rem
+}
+.prompt-row button{
+  background:#333; color:#fff; border:none; border-radius:8px; padding:0 1.2rem; font-size:1.05rem; cursor:pointer; transition:background .2s
+}
+.prompt-row button:hover{background:var(--accent)}
+
+/* Models */
+.models-row{display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem; flex-wrap:wrap}
+.model-toggle{display:flex; align-items:center; gap:.35rem; background:#222; border-radius:6px; padding:.35rem .8rem; font-size:1rem}
+.model-toggle input[type="checkbox"]{accent-color:var(--accent)}
+.no-key{background:#2a1818; color:var(--warn); border-radius:4px; font-size:.85rem; padding:.1rem .5rem; margin-left:.3rem}
+
+/* Responses grid: perfectly aligned cards */
+.responses{display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1rem; margin-top:1.5rem}
+.response-card{background:var(--card); border-radius:10px; padding:1rem 1.2rem; min-height:140px; display:flex; flex-direction:column}
+.response-title{font-weight:700; margin-bottom:.5rem; font-size:1.05rem}
+.response-content{color:#ccc; white-space:pre-wrap; word-break:break-word; flex:1}
+
+/* Utilities */
+.hidden{display:none!important}
+
+@media (max-width:700px){
+  .chat-box{padding:1rem}
+}

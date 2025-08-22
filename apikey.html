@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeastedChat - API Keys</title>
+    <style>
+        body {
+            background: #111;
+            color: #fff;
+            font-family: 'Inter', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem 1rem 2rem;
+            background: #181818;
+        }
+        .header-title {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: -1px;
+        }
+        .header-sub {
+            font-size: 1rem;
+            color: #aaa;
+            margin-left: 0.5rem;
+        }
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        .header-actions button {
+            background: #222;
+            color: #fff;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 0.5rem 1.2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .header-actions button:hover {
+            background: #333;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 80vh;
+            margin-top: 2rem;
+        }
+        .apikey-box {
+            background: #181818;
+            border-radius: 14px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+            padding: 2rem 2.5rem 2.5rem 2.5rem;
+            min-width: 420px;
+            max-width: 600px;
+            width: 100%;
+        }
+        h2 {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .models-row {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .model-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: #222;
+            border-radius: 6px;
+            padding: 0.3rem 0.8rem;
+            font-size: 1rem;
+        }
+        .model-toggle input[type="checkbox"] {
+            accent-color: #4f8cff;
+        }
+        .apikey-input {
+            margin-bottom: 1.2rem;
+        }
+        .apikey-input label {
+            color: #aaa;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .apikey-input input[type="text"] {
+            width: 100%;
+            padding: 0.7rem;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background: #222;
+            color: #fff;
+            font-size: 1rem;
+        }
+        button[type="submit"] {
+            background: #4f8cff;
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+            width: 100%;
+        }
+        .success {
+            color: #4f8cff;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        @media (max-width: 700px) {
+            .apikey-box { min-width: 90vw; padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <span class="header-title">FeastedChat</span>
+            <span class="header-sub">API Key Settings</span>
+        </div>
+        <div class="header-actions">
+            <button onclick="window.location.href='index.html'">Chat</button>
+            <button onclick="window.location.href='apikey.html'">Settings</button>
+        </div>
+    </div>
+    <div class="main">
+        <div class="apikey-box">
+            <h2>Manage API Keys</h2>
+            <form id="apiKeyForm" autocomplete="off">
+                <div class="models-row">
+                    <label class="model-toggle"><input type="checkbox" id="toggle-gpt4o"> GPT-4o</label>
+                    <label class="model-toggle"><input type="checkbox" id="toggle-claude"> Claude 3.5 Sonnet</label>
+                    <label class="model-toggle"><input type="checkbox" id="toggle-grok"> Grok-2</label>
+                    <label class="model-toggle"><input type="checkbox" id="toggle-gemini"> Gemini 1.5 Flash (Free)</label>
+                    <label class="model-toggle"><input type="checkbox" id="toggle-commandr"> Command R</label>
+                    <label class="model-toggle"><input type="checkbox" id="toggle-mistral"> Mistral Large</label>
+                    <label class="model-toggle"><input type="checkbox" id="toggle-openrouter"> OpenRouter Claude</label>
+                </div>
+                <div class="apikey-input" id="input-gpt4o" style="display:none;">
+                    <label for="gpt4o">GPT-4o API Key</label>
+                    <input type="text" id="gpt4o" name="gpt4o" placeholder="Enter GPT-4o API Key">
+                </div>
+                <div class="apikey-input" id="input-claude" style="display:none;">
+                    <label for="claude">Claude 3.5 Sonnet API Key</label>
+                    <input type="text" id="claude" name="claude" placeholder="Enter Claude API Key">
+                </div>
+                <div class="apikey-input" id="input-grok" style="display:none;">
+                    <label for="grok">Grok-2 API Key</label>
+                    <input type="text" id="grok" name="grok" placeholder="Enter Grok-2 API Key">
+                </div>
+                <div class="apikey-input" id="input-gemini" style="display:none;">
+                    <label for="gemini">Gemini 1.5 Flash API Key</label>
+                    <input type="text" id="gemini" name="gemini" placeholder="Enter Gemini API Key">
+                </div>
+                <div class="apikey-input" id="input-commandr" style="display:none;">
+                    <label for="commandr">Command R API Key</label>
+                    <input type="text" id="commandr" name="commandr" placeholder="Enter Command R API Key">
+                </div>
+                <div class="apikey-input" id="input-mistral" style="display:none;">
+                    <label for="mistral">Mistral Large API Key</label>
+                    <input type="text" id="mistral" name="mistral" placeholder="Enter Mistral API Key">
+                </div>
+                <div class="apikey-input" id="input-openrouter" style="display:none;">
+                    <label for="openrouter">OpenRouter Claude API Key</label>
+                    <input type="text" id="openrouter" name="openrouter" placeholder="Enter OpenRouter Claude API Key">
+                </div>
+                <button type="submit">Save API Keys</button>
+            </form>
+            <div class="success" id="successMsg" style="display:none;">API Keys saved!</div>
+        </div>
+    </div>
+    <script>
+        // Toggle input visibility
+        const models = [
+            { toggle: 'toggle-gpt4o', input: 'input-gpt4o', key: 'gpt4o' },
+            { toggle: 'toggle-claude', input: 'input-claude', key: 'claude' },
+            { toggle: 'toggle-grok', input: 'input-grok', key: 'grok' },
+            { toggle: 'toggle-gemini', input: 'input-gemini', key: 'gemini' },
+            { toggle: 'toggle-commandr', input: 'input-commandr', key: 'commandr' },
+            { toggle: 'toggle-mistral', input: 'input-mistral', key: 'mistral' },
+            { toggle: 'toggle-openrouter', input: 'input-openrouter', key: 'openrouter' },
+        ];
+        models.forEach(m => {
+            const toggle = document.getElementById(m.toggle);
+            const inputDiv = document.getElementById(m.input);
+            // Restore toggle state and key from localStorage
+            const enabled = localStorage.getItem(m.toggle) === 'true';
+            toggle.checked = enabled;
+            inputDiv.style.display = enabled ? '' : 'none';
+            const savedKey = localStorage.getItem(m.key + '_api_key');
+            if (savedKey) {
+                inputDiv.querySelector('input').value = savedKey;
+            }
+            toggle.addEventListener('change', function() {
+                inputDiv.style.display = this.checked ? '' : 'none';
+            });
+        });
+        document.getElementById('apiKeyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            models.forEach(m => {
+                const toggle = document.getElementById(m.toggle);
+                localStorage.setItem(m.toggle, toggle.checked);
+                const input = document.getElementById(m.input).querySelector('input');
+                if (toggle.checked && input.value) {
+                    localStorage.setItem(m.key + '_api_key', input.value);
+                } else {
+                    localStorage.removeItem(m.key + '_api_key');
+                }
+            });
+            document.getElementById('successMsg').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('successMsg').style.display = 'none';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
