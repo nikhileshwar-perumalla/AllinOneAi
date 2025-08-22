@@ -50,15 +50,6 @@ Contributions are welcome! To contribute:
 
 Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file if available.
 
-## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
-
-## Acknowledgments
-
-- Inspired by the rapid advancements in artificial intelligence and the need for accessible AI tools.
-- Thanks to all contributors and the open-source community.
-
----
 
 Feel free to customize this README to better fit your project's unique features!
