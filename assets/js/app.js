@@ -1,4 +1,4 @@
-// Simple front-end controller for FeastedChat
+// Simple front-end controller for AllinOneAi
 // - Handles form submit placeholder
 // - Controls model toggles -> show/hide response cards based on localStorage toggles from settings page
 
