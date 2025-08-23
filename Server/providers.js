@@ -49,3 +49,44 @@ export async function runGemini(prompt, apiKey){
 async function safeJson(resp){
   try{ return await resp.json(); }catch{ return null; }
 }
+
+// Groq - free tier (get key at https://console.groq.com/)
+export async function runGroq(prompt, apiKey){
+  if(!apiKey) throw new Error('groq_key_missing');
+  const resp = await fetch('https://api.groq.com/openai/v1/chat/completions',{
+    method:'POST',
+    headers:{ 'Authorization': `Bearer ${apiKey}`, 'Content-Type':'application/json' },
+    body: JSON.stringify({
+      model: 'llama-3.1-8b-instant',
+      messages: [
+        { role:'system', content:'You are a helpful assistant.' },
+        { role:'user', content: prompt }
+      ]
+    })
+  });
+  if(!resp.ok){
+    const err = await safeJson(resp);
+    throw new Error(err?.error?.message || `groq_http_${resp.status}`);
+  }
+  const json = await resp.json();
+  return json?.choices?.[0]?.message?.content || '';
+}
+
+// Hugging Face Inference API (free) - requires token from https://huggingface.co/settings/tokens
+export async function runHf(prompt, apiKey){
+  if(!apiKey) throw new Error('hf_key_missing');
+  const model = 'mistralai/Mistral-7B-Instruct-v0.2';
+  const resp = await fetch(`https://api-inference.huggingface.co/models/${model}`,{
+    method:'POST',
+    headers:{ 'Authorization': `Bearer ${apiKey}`, 'Content-Type':'application/json' },
+    body: JSON.stringify({ inputs: prompt })
+  });
+  if(!resp.ok){
+    const err = await safeJson(resp);
+    throw new Error(err?.error || `hf_http_${resp.status}`);
+  }
+  const json = await resp.json();
+  // The HF response can be array or object; handle common shape
+  const text = Array.isArray(json) ? (json[0]?.generated_text || '') : (json?.generated_text || '');
+  return text;
+}
