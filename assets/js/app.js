@@ -14,7 +14,9 @@
     grok: document.getElementById('card-grok'),
     commandr: document.getElementById('card-commandr'),
     mistral: document.getElementById('card-mistral'),
-    openrouter: document.getElementById('card-openrouter'),
+  openrouter: document.getElementById('card-openrouter'),
+  groq: document.getElementById('card-groq'),
+  hf: document.getElementById('card-hf'),
   };
 
   // Map model -> checkbox element
@@ -35,6 +37,8 @@
     return {
       openai: localStorage.getItem('gpt4o_api_key') || localStorage.getItem('openai_api_key') || '',
       gemini: localStorage.getItem('gemini_api_key') || '',
+  groq: localStorage.getItem('groq_api_key') || '',
+  hf: localStorage.getItem('hf_api_key') || '',
       // add more when providers are added
     };
   }
@@ -44,6 +48,8 @@
     switch(model){
       case 'gpt4o': return !!k.openai;
       case 'gemini': return !!k.gemini;
+  case 'groq': return !!k.groq;
+  case 'hf': return !!k.hf;
       // extend for other providers
       default: return false;
     }

@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { runOpenAI, runGemini } from './providers.js';
+import { runOpenAI, runGemini, runGroq, runHf } from './providers.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -51,6 +51,20 @@ app.post('/api/generate', async (req, res) => {
             const key = keys?.gemini || process.env.GEMINI_API_KEY;
             if(!key) return;
             const text = await runGemini(prompt, key);
+            responses[model] = text || '';
+            break;
+          }
+          case 'groq': {
+            const key = keys?.groq || process.env.GROQ_API_KEY;
+            if(!key) return;
+            const text = await runGroq(prompt, key);
+            responses[model] = text || '';
+            break;
+          }
+          case 'hf': {
+            const key = keys?.hf || process.env.HF_API_KEY;
+            if(!key) return;
+            const text = await runHf(prompt, key);
             responses[model] = text || '';
             break;
           }

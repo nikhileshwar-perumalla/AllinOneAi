@@ -149,6 +149,8 @@
                     <label class="model-toggle"><input type="checkbox" id="toggle-commandr"> Command R</label>
                     <label class="model-toggle"><input type="checkbox" id="toggle-mistral"> Mistral Large</label>
                     <label class="model-toggle"><input type="checkbox" id="toggle-openrouter"> OpenRouter Claude</label>
+                    <label class="model-toggle"><input type="checkbox" id="toggle-groq"> Groq (Free)</label>
+                    <label class="model-toggle"><input type="checkbox" id="toggle-hf"> Hugging Face (Free)</label>
                 </div>
                 <div class="apikey-input" id="input-gpt4o" style="display:none;">
                     <label for="gpt4o">GPT-4o API Key</label>
@@ -178,6 +180,14 @@
                     <label for="openrouter">OpenRouter Claude API Key</label>
                     <input type="text" id="openrouter" name="openrouter" placeholder="Enter OpenRouter Claude API Key">
                 </div>
+                <div class="apikey-input" id="input-groq" style="display:none;">
+                    <label for="groq">Groq API Key</label>
+                    <input type="text" id="groq" name="groq" placeholder="Enter Groq API Key">
+                </div>
+                <div class="apikey-input" id="input-hf" style="display:none;">
+                    <label for="hf">Hugging Face API Token</label>
+                    <input type="text" id="hf" name="hf" placeholder="Enter HF API Token">
+                </div>
                 <button type="submit">Save API Keys</button>
             </form>
             <div class="success" id="successMsg" style="display:none;">API Keys saved!</div>
@@ -193,6 +203,8 @@
             { toggle: 'toggle-commandr', input: 'input-commandr', key: 'commandr' },
             { toggle: 'toggle-mistral', input: 'input-mistral', key: 'mistral' },
             { toggle: 'toggle-openrouter', input: 'input-openrouter', key: 'openrouter' },
+            { toggle: 'toggle-groq', input: 'input-groq', key: 'groq' },
+            { toggle: 'toggle-hf', input: 'input-hf', key: 'hf' },
         ];
         models.forEach(m => {
             const toggle = document.getElementById(m.toggle);
